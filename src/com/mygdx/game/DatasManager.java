@@ -13,7 +13,7 @@ public class DatasManager
 {
 
 
-    private static final String PROFILE_DATA_FILE = "log.json";
+    private static final String PROFILE_DATA_FILE = "save.json";
    
 
     private datas savedfile;
