@@ -7,7 +7,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Base64Coder;
 import com.badlogic.gdx.utils.Json;
 
-
+//Save file encoding w/ base64
 
 public class DatasManager
 {
@@ -17,8 +17,7 @@ public class DatasManager
    
 
     private datas savedfile;
-    Random r = new Random();
-    char c = (char)(r.nextInt(26) + 'a');
+
 
     public DatasManager()
     {
@@ -42,25 +41,25 @@ public class DatasManager
             try {
 
          
-                String savefileAsCode1 = Base64Coder.decodeString(savedDataFile.readString().substring(1));
+                
                 String savefileAsCode =  Base64Coder.decodeString(savefileAsCode1);
                 savedfile = json.fromJson(datas.class, savefileAsCode);
 
             } catch( Exception e ) {
 
 
-                savedfile = new datas();//profile = new Profile();
+                savedfile = new datas();
                 persist( savedfile );
 
             }
 
         } else {
-            // create a new profile data file
+           
             savedfile = new datas();
             persist( savedfile );
         }
 
-        // return the result
+        
         return savedfile;
     }
 
@@ -75,8 +74,8 @@ public class DatasManager
         FileHandle savedDataFile = Gdx.files.local( PROFILE_DATA_FILE );
 
         String savefileAsText = json.toJson( sfile );
-        String savefileAsCode1 = Base64Coder.encodeString( savefileAsText );
-        String savefileAsCode = c + Base64Coder.encodeString( savefileAsCode1 );
+        String savefileAsCode = Base64Coder.encodeString( savefileAsText );
+     
 
        savedDataFile.writeString( savefileAsCode, false );
    
