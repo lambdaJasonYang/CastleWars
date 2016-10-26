@@ -19,7 +19,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class itemshop implements Screen,InputProcessor{
 	//public PurchaseManagerConfig purchaseManagerConfig;
-	String productID_d100 = "diamond100";
+	
 	static Texture back;
 	Batch batch;
 	boolean connected = false;
@@ -33,7 +33,7 @@ public class itemshop implements Screen,InputProcessor{
 
 	ImageButton gplus;
 	Animation title;
-	TextButton diamond10,diamond50, diamond100, diamond200, diamond500, diamond1000, fortify,rebuild,goback;
+	TextButton fortify,rebuild,goback;
 	
 	Beta game;
 	float Uw,Uh;
@@ -49,12 +49,7 @@ public class itemshop implements Screen,InputProcessor{
     //purchaseManagerConfig.addOffer(new Offer().setType(OfferType.ENTITLEMENT).setIdentifier(productID_d100));
 	fmultiplyer = 1.2f; 
 	gplus = new ImageButton(game.loadin.ginstyle);
-	diamond10 = new TextButton("$.99: 10",game.loadin.cashbuttonstyle);
-	diamond50 = new TextButton("$2.99: 50", game.loadin.cashbuttonstyle);
-	diamond100 = new TextButton("$4.99: 100",game.loadin.cashbuttonstyle);
-	diamond200 = new TextButton("$7.99: 200", game.loadin.cashbuttonstyle);
-	diamond500 = new TextButton("$18.99: 500", game.loadin.cashbuttonstyle);
-	diamond1000 = new TextButton("$22.99: 900", game.loadin.cashbuttonstyle);		
+			
 	fortify = new TextButton("fortify",game.loadin.yesbuttonstyle);
 	rebuild = new TextButton("rebuild",game.loadin.yesbuttonstyle);
 	goback = new TextButton("back",game.loadin.nobuttonstyle);
@@ -79,12 +74,7 @@ public class itemshop implements Screen,InputProcessor{
 	float ratio4 = ratio3/2f;
 	title = game.loadin.title;
 	float scalin = (Gdx.graphics.getWidth() > Gdx.graphics.getHeight() ? Uw : Uh );
-	diamond10.setBounds(Uw * 5f, Uh * 60f, ( scalin * 20f), ( scalin * 20f)*ratio4);
-	diamond50.setBounds(Uw * 30f, Uh * 60f, ( scalin * 20f), ( scalin * 20f)*ratio4);
-	diamond100.setBounds(Uw * 5f, Uh * 45f, ( scalin * 20f), ( scalin * 20f)*ratio4);
-	diamond200.setBounds(Uw * 30f, Uh * 45f, ( scalin * 20f), ( scalin * 20f)*ratio4);
-	diamond500.setBounds(Uw * 5f, Uh * 30f, ( scalin * 20f), ( scalin * 20f)*ratio4);
-	diamond1000.setBounds(Uw * 30f, Uh * 30f, ( scalin * 20f), ( scalin * 20f)*ratio4);
+
 	//play.().expand().fill();
 	gplus.setBounds(Uw * 80f, Uh * 10f, ( scalin * 15f), ( scalin * 15f)*ratio3);
 	gplus.getImageCell().expand().fill();
@@ -97,12 +87,7 @@ public class itemshop implements Screen,InputProcessor{
 	goback.setBounds(Uw * 80f, Uh * 1f, ( scalin * 10f), ( scalin * 10f) * ratio3);
 	//qmark.getImageCell().expand().fill();
 	mstage.addActor(goback);
-	mstage.addActor(diamond10);
-	mstage.addActor(diamond50);
-	mstage.addActor(diamond100);
-	mstage.addActor(diamond200);
-	mstage.addActor(diamond500);
-	mstage.addActor(diamond1000);
+
 	mstage.addActor(rebuild);
 	mstage.addActor(gplus);
 	mstage.addActor(fortify);
@@ -120,55 +105,7 @@ public class itemshop implements Screen,InputProcessor{
 		}
 	});
 
-	diamond10.addListener(new ClickListener(){	
-		@Override
-		public void clicked(InputEvent e, float x, float y){
-		//	System.out.println("hel");
-			game.gserv.getdetail("diamond10");
-	//		Gdx.input.setInputProcessor(game.shoppin.stage);
-		}
-	});
-	diamond50.addListener(new ClickListener(){	
-		@Override
-		public void clicked(InputEvent e, float x, float y){
-		//	System.out.println("hel");
-			game.gserv.getdetail("diamond50");
-	//		Gdx.input.setInputProcessor(game.shoppin.stage);
-		}
-	});
-	diamond100.addListener(new ClickListener(){	
-		@Override
-		public void clicked(InputEvent e, float x, float y){
-		//	System.out.println("hel");
-			game.gserv.getdetail("diamond100");
-	//		Gdx.input.setInputProcessor(game.shoppin.stage);
-		}
-	});
-	diamond200.addListener(new ClickListener(){	
-		@Override
-		public void clicked(InputEvent e, float x, float y){
-		//	System.out.println("hel");
-			game.gserv.getdetail("diamond200");
-	//		Gdx.input.setInputProcessor(game.shoppin.stage);
-		}
-	});
-	diamond500.addListener(new ClickListener(){	
-		@Override
-		public void clicked(InputEvent e, float x, float y){
-		//	System.out.println("hel");
-			game.gserv.getdetail("diamond500");
-	//		Gdx.input.setInputProcessor(game.shoppin.stage);
-		}
-	});
-	diamond1000.addListener(new ClickListener(){	
-		@Override
-		public void clicked(InputEvent e, float x, float y){
-		//	System.out.println("hel");
-			game.gserv.getdetail("diamond900");
-			//game.gserv.getdetail("diamond900");
-	//		Gdx.input.setInputProcessor(game.shoppin.stage);
-		}
-	});
+
 	rebuild.addListener(new ClickListener(){	
 		@Override
 		public void clicked(InputEvent e, float x, float y){
@@ -214,24 +151,7 @@ public class itemshop implements Screen,InputProcessor{
 	}
 	public void backend(){
 		if(game.gserv.rtnsteps() == this.steps){
-		if(game.gserv.transfering().equals("diamond10")){
-			game.save.diamond += 10;
-		}
-		if(game.gserv.transfering().equals("diamond50")){
-			game.save.diamond += 50;
-		}
-		if(game.gserv.transfering().equals("diamond100")){
-			game.save.diamond += 100;
-		}
-		if(game.gserv.transfering().equals("diamond200")){
-			game.save.diamond += 200;
-		}
-		if(game.gserv.transfering().equals("diamond500")){
-			game.save.diamond += 500;
-		}
-		if(game.gserv.transfering().equals("diamond900")){
-			game.save.diamond += 900;
-		}
+		
 		game.save.iapbought = true;
 		game.saver.persist();
 		this.steps++;
@@ -273,7 +193,7 @@ public class itemshop implements Screen,InputProcessor{
 	batch.draw(title.getKeyFrame(time, true),0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 	game.loadin.lfont.draw(batch,"Fortification Count:" + String.valueOf(game.save.fortify), 55f * Uw, 65f * Uh);
 	game.loadin.lfont.draw(batch,"Stat Boost:" + String.format("%.2f", Math.pow(fmultiplyer,game.save.fortify)) + "x", 65f * Uw, 75f * Uh);
-	game.loadin.lfont.draw(batch,"Diamonds:" + String.valueOf(game.save.diamond), 55f * Uw, 45f * Uh);
+
 	game.loadin.bbfont.draw(batch, "SHOP", 30f * Uw, 92.65f * Uh);
 	game.loadin.lfont.drawMultiLine(batch, "If you FORTIFY \nyou require " + required + " Diamonds", 57f * Uw, 60f * Uh);
 	game.loadin.lfont.drawMultiLine(batch, "If you REBUILD \nyou will gain " + gained + " Diamonds", 57f * Uw, 40f * Uh);
